@@ -69,10 +69,10 @@
   }
   .card:hover { transform: translateY(-6px); box-shadow:0 20px 36px rgba(0,0,0,0.15); }
   .card img {
-  width:100%;
-  height:auto;   /* 改成自動高度 */
-  object-fit: contain; /* 整張圖片顯示，會有上下空白 */
-  background:#fdfcf9;
+  width: 100%;
+  height: 220px; /* 固定高度 */
+  object-fit: cover; /* 或 remove object-fit */
+  background: #fdfcf9;
 }
 
   .card h3 { margin:16px 0 8px; font-family:'Playfair Display', serif; font-size:22px; color:#5a4a3c; }
