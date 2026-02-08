@@ -141,7 +141,52 @@
     #hero p { font-size:18px; }
     .card img { height:200px; }
   }
+/* ===== 封底 Footer ===== */
+#footer {
+  background:#f6f3ee;
+  padding:80px 20px 60px;
+  text-align:center;
+}
 
+.footer-inner {
+  max-width:700px;
+  margin:0 auto;
+}
+
+#footer h3 {
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  color:#5a4a3c;
+  margin-bottom:12px;
+}
+
+.footer-tagline {
+  font-size:18px;
+  line-height:1.8;
+  color:#7a6b5c;
+  margin-bottom:32px;
+}
+
+.footer-links {
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:32px;
+  color:#5a4a3c;
+}
+
+.footer-links a {
+  color:inherit;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color:#bfa68a;
+}
+
+.footer-copy {
+  font-size:14px;
+  color:#aaa;
+}
 </style>
 </head>
 <body>
@@ -304,13 +349,15 @@
       <li><strong>提供匯款帳號：</strong>確認無誤後提供匯款帳號。</li>
       <li><strong>交付最終版本：</strong>完成匯款後交付最終「無廣告版本」。</li>
     </ol>
+    <!-- 下單按鈕（流程頁） -->
+    <div class="order-btn">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">
+        前往填寫下單表單
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ===== 下單按鈕 ===== -->
-<div class="order-btn">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">前往下單表單</a>
-</div>
 
 <script>
   // 淡入效果
@@ -353,7 +400,25 @@
     musicModal.classList.add('hidden');
   });
 </script>
+<!-- ===== 封底 Footer ===== -->
+<footer id="footer">
+  <div class="footer-inner">
+    <h3>Dearus</h3>
+    <p class="footer-tagline">
+      把重要的那一天，做成可以慢慢看的樣子。
+    </p>
 
+    <div class="footer-links">
+      <a href="https://shopee.tw/may3062525" target="_blank">Shopee</a>
+      <span>·</span>
+      <a href="https://www.instagram.com/dearus_2025/" target="_blank">Instagram</a>
+    </div>
+
+    <p class="footer-copy">
+      © 2025 Dearus Wedding Design. All Rights Reserved.
+    </p>
+  </div>
+</footer>
 </body>
 </html>
 
