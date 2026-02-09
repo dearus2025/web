@@ -380,7 +380,10 @@
     });
   }, { threshold: 0.2 });
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+  observer.observe(section);
+  section.classList.add('visible'); // Safari 保命
+});
 
   const orderObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
