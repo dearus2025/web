@@ -128,11 +128,63 @@
   #contact .contact-links a:hover { color:#bfa68a; text-decoration:underline; }
 
   /* 製作流程 */
-  .process-steps { margin-top:24px; max-width:700px; text-align:left; line-height:1.8; color:#7a6b5c; font-size:18px; padding-left:20px; }
-  .process-steps li { margin-bottom:16px; }
-  .process-steps a { color:#bfa68a; text-decoration:underline; }
-  .process-steps a:hover { color:#d7c6b6; }
+.process-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+  margin-top:40px;
+}
 
+.process-card {
+  background:#fff;
+  border-radius:20px;
+  padding:30px 20px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  text-align:center;
+  opacity:0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.process-card.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+
+.process-card .step-icon {
+  font-size:48px;
+  margin-bottom:16px;
+}
+
+.process-card h3 {
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin-bottom:12px;
+  color:#5a4a3c;
+}
+
+.process-card p {
+  color:#7a6b5c;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.process-card a {
+  color:#bfa68a;
+  text-decoration:underline;
+}
+.process-card a:hover {
+  color:#d7c6b6;
+}
+
+@media screen and (max-width:600px){
+  .process-cards {
+    grid-template-columns: 1fr;
+  }
+  .process-card .step-icon {
+    font-size:40px;
+  }
+}
   /* ===== 音樂燈箱 ===== */
   #music-modal {
     position: fixed; top:0; left:0;
@@ -391,27 +443,52 @@
 </section>
 
 <!-- ===== 製作流程 ===== -->
-<section id="process">
+<!-- ===== 製作流程（卡片式升級版） ===== -->
+<section id="process" style="background: linear-gradient(135deg,#fdfcf9,#f6f3ee); padding:60px 20px;">
   <div class="cards-container">
-    <h2>製作與付款流程</h2>
-    <ol class="process-steps">
-      <li><strong>填寫訂單表單：</strong>新人前往 <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">下單表單</a> 填寫。</li>
-      <li><strong>完成初版：</strong>收到完整資料後 2 個工作天內完成初版並提供預覽。</li>
-      <li><strong>校稿修改：</strong>可修改文字及照片順序，共 2 次。</li>
-      <li><strong>提供匯款帳號：</strong>確認無誤後提供匯款帳號。</li>
-      <li><strong>交付最終版本：</strong>完成匯款後交付最終「無廣告版本」。</li>
-    </ol>
-    <!-- 下單按鈕（流程頁） -->
-    <div class="order-btn">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; color:#5a4a3c;">製作與付款流程</h2>
+    <div class="process-cards">
+
+      <div class="process-card">
+        <div class="step-icon">📝</div>
+        <h3>填寫訂單表單</h3>
+        <p>新人前往 <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">下單表單</a> 填寫。</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-icon">🎨</div>
+        <h3>完成初版</h3>
+        <p>收到完整資料後 2 個工作天內完成初版並提供預覽。</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-icon">✏️</div>
+        <h3>校稿修改</h3>
+        <p>可修改文字及照片順序，共 2 次。</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-icon">💰</div>
+        <h3>提供匯款帳號</h3>
+        <p>確認無誤後提供匯款帳號完成付款。</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-icon">📦</div>
+        <h3>交付最終版本</h3>
+        <p>完成匯款後交付最終「無廣告版本」作品。</p>
+      </div>
+
+    </div>
+
+    <div class="order-btn" style="text-align:center; margin-top:30px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank" 
+         style="display:inline-block; background:#bfa68a; color:#fff; padding:14px 28px; border-radius:12px; text-decoration:none; font-weight:600;">
         前往填寫下單表單
       </a>
     </div>
   </div>
 </section>
-
-
-<script>
   // 淡入效果
   const sections = document.querySelectorAll('section');
   const orderBtn = document.querySelector('.order-btn');
@@ -454,6 +531,17 @@
   musicNo.addEventListener('click', () => {
     musicModal.classList.add('hidden');
   });
+ <script>
+const processCards = document.querySelectorAll('.process-card');
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+processCards.forEach(card => cardObserver.observe(card));
 </script>
 <!-- ===== 封底 Footer ===== -->
 <footer id="footer">
@@ -476,6 +564,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
