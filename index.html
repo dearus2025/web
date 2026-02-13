@@ -128,10 +128,101 @@
   #contact .contact-links a:hover { color:#bfa68a; text-decoration:underline; }
 
   /* 製作流程 */
-  .process-steps { margin-top:24px; max-width:700px; text-align:left; line-height:1.8; color:#7a6b5c; font-size:18px; padding-left:20px; }
-  .process-steps li { margin-bottom:16px; }
-  .process-steps a { color:#bfa68a; text-decoration:underline; }
-  .process-steps a:hover { color:#d7c6b6; }
+ 
+ #process {
+  padding: 60px 20px;
+  background: #fff8f2;
+}
+
+#process h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #5a4a3c;
+  margin-bottom: 36px;
+}
+
+.process-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.process-card {
+  background: linear-gradient(135deg, #fdfcf9, #f0e8dc);
+  border-radius: 20px;
+  padding: 24px 20px;
+  max-width: 280px;
+  flex: 1 1 250px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.process-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, #f7f3ee, #e8ded0);
+}
+
+.process-card .step-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: #bfa68a;
+  margin-bottom: 12px;
+}
+
+.process-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #5a4a3c;
+  margin-bottom: 12px;
+}
+
+.process-card p {
+  font-size: 16px;
+  color: #7a6b5c;
+  line-height: 1.6;
+}
+
+.process-card p a {
+  color: #bfa68a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.process-card p a:hover {
+  text-decoration: underline;
+}
+
+.order-btn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.order-btn a {
+  background: linear-gradient(135deg, #bfa68a, #e8d6c1);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.order-btn a:hover {
+  background: linear-gradient(135deg, #a88c6f, #d8c4ac);
+  transform: translateY(-2px);
+}
 
   /* ===== 音樂燈箱 ===== */
   #music-modal {
@@ -394,14 +485,34 @@
 <section id="process">
   <div class="cards-container">
     <h2>製作與付款流程</h2>
-    <ol class="process-steps">
-      <li><strong>填寫訂單表單：</strong>新人前往 <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">下單表單</a> 填寫。</li>
-      <li><strong>完成初版：</strong>收到完整資料後 2 個工作天內完成初版並提供預覽。</li>
-      <li><strong>校稿修改：</strong>可修改文字及照片順序，共 2 次。</li>
-      <li><strong>提供匯款帳號：</strong>確認無誤後提供匯款帳號。</li>
-      <li><strong>交付最終版本：</strong>完成匯款後交付最終「無廣告版本」。</li>
-    </ol>
-    <!-- 下單按鈕（流程頁） -->
+    <div class="process-cards">
+      <div class="process-card">
+        <div class="step-num">1</div>
+        <h3>填寫訂單表單</h3>
+        <p>新人前往 <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">下單表單</a> 填寫。</p>
+      </div>
+      <div class="process-card">
+        <div class="step-num">2</div>
+        <h3>完成初版</h3>
+        <p>收到完整資料後 2 個工作天內完成初版並提供預覽。</p>
+      </div>
+      <div class="process-card">
+        <div class="step-num">3</div>
+        <h3>校稿修改</h3>
+        <p>可修改文字及照片順序，共 2 次。</p>
+      </div>
+      <div class="process-card">
+        <div class="step-num">4</div>
+        <h3>提供匯款帳號</h3>
+        <p>確認無誤後提供匯款帳號。</p>
+      </div>
+      <div class="process-card">
+        <div class="step-num">5</div>
+        <h3>交付最終版本</h3>
+        <p>完成匯款後交付最終「無廣告版本」。</p>
+      </div>
+    </div>
+
     <div class="order-btn">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScqOjwcbGXsaGMQxF6AGR298K08dQS60q405PSeiYDiQrmrcg/viewform?usp=header" target="_blank">
         前往填寫下單表單
@@ -474,8 +585,21 @@
     </p>
   </div>
 </footer>
+<script>
+const processCards = document.querySelectorAll('.process-card');
+const processObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+processCards.forEach(card => processObserver.observe(card));
+</script>
 </body>
 </html>
+
 
 
 
