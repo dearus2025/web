@@ -547,7 +547,10 @@
     </div>
   </div>
 </section>
-
+<!-- 右下角音樂控制 -->
+<div id="music-toggle">
+  ♫
+</div>
 <script>
   // 淡入效果
   const sections = document.querySelectorAll('section');
@@ -638,10 +641,7 @@ const processObserver = new IntersectionObserver(entries => {
 
 processCards.forEach(card => processObserver.observe(card));
 </script>
-<!-- 右下角音樂控制 -->
-<div id="music-toggle">
-  ♫
-</div>
+
 </body>
 </html>
 
