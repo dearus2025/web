@@ -319,6 +319,32 @@
 .footer-copy {
   font-size:14px;
   color:#aaa;
+}/* ===== 右下角音樂控制按鈕 ===== */
+#music-toggle{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  width:55px;
+  height:55px;
+  background: linear-gradient(135deg,#d7c6b6,#bfa68a);
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  z-index:9999;
+  transition: all 0.3s ease;
+}
+
+#music-toggle:hover{
+  transform: scale(1.1);
+}
+
+#music-toggle.paused{
+  background:#ccc;
 }
 </style>
 </head>
@@ -565,6 +591,21 @@
   musicNo.addEventListener('click', () => {
     musicModal.classList.add('hidden');
   });
+  // ===== 右下角音樂控制 =====
+const musicToggle = document.getElementById('music-toggle');
+
+musicToggle.addEventListener('click', () => {
+  if(bgMusic.paused){
+    bgMusic.play();
+    musicToggle.classList.remove('paused');
+    musicToggle.innerHTML = "♫";
+  }else{
+    bgMusic.pause();
+    musicToggle.classList.add('paused');
+    musicToggle.innerHTML = "✕";
+  }
+});
+
 </script>
 <!-- ===== 封底 Footer ===== -->
 <footer id="footer">
@@ -597,6 +638,10 @@ const processObserver = new IntersectionObserver(entries => {
 
 processCards.forEach(card => processObserver.observe(card));
 </script>
+<!-- 右下角音樂控制 -->
+<div id="music-toggle">
+  ♫
+</div>
 </body>
 </html>
 
