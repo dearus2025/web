@@ -7,6 +7,40 @@
 <title>Dearus｜婚禮電子喜帖</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 <style>
+html{
+  scroll-behavior:smooth;
+}
+/* ===== 左側浮動選單 ===== */
+.side-nav{
+  position:fixed;
+  left:30px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  z-index:9999;
+}
+
+.side-nav a{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:2px;
+  color:#bfa68a;
+  transition:all 0.3s ease;
+}
+
+.side-nav a:hover{
+  color:#8c6f5a;
+  transform:translateX(3px);
+}
+
+.side-nav a.active{
+  font-weight:600;
+  color:#000;
+}
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Montserrat', sans-serif; color:#333; scroll-behavior: smooth; background:#fdfcf9; }
 
@@ -346,9 +380,20 @@
 #music-toggle.paused{
   background:#ccc;
 }
+@media screen and (max-width:768px){
+  .side-nav{
+    display:none;
+  }
+}
 </style>
 </head>
 <body>
+  <nav class="side-nav">
+  <a href="#section1">網站式電子喜帖</a>
+  <a href="#section2">婚禮影片</a>
+  <a href="#process">製作與付款流程</a>
+  <a href="#contact">聯絡我們</a>
+</nav>
 <!-- ===== 音樂燈箱 ===== -->
 <div id="music-modal">
   <div class="modal-content">
@@ -608,7 +653,25 @@ musicToggle.addEventListener('click', () => {
     musicToggle.innerHTML = "✕";
   }
 });
+const navLinks = document.querySelectorAll('.side-nav a');
+const sectionsAll = document.querySelectorAll('section, footer');
 
+const highlightObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === "#" + entry.target.id){
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.6 });
+
+sectionsAll.forEach(section => {
+  highlightObserver.observe(section);
+});
 </script>
 <!-- ===== 封底 Footer ===== -->
 <footer id="footer">
